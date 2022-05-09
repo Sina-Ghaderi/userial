@@ -1,4 +1,4 @@
-module snix.ir/serial
+module github.com/sina-ghaderi/userial
 
 go 1.18
 
