@@ -1,4 +1,4 @@
-package serial
+package userial
 
 import (
 	"golang.org/x/sys/unix"
