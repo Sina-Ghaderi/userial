@@ -31,8 +31,8 @@ func main() {
 	// serial port with custom config
 	//
 	// p_dev := "/dev/ttyACM0"
-	// s := serial.NewSerial().SetBuadRate(serial.B0019200)
-	// p, err = s.SetParity(serial.ParityEvn).OpenPort(p_dev)
+	// s := userial.NewSerial().SetBuadRate(userial.B0019200)
+	// p, err = s.SetParity(userial.ParityEvn).OpenPort(p_dev)
 
 	if err != nil {
 		log.Fatal(err)

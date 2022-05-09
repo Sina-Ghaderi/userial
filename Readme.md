@@ -40,7 +40,7 @@ do show ip int br
 `
 
 func main() {
-	p, err := serial.NewSerial().OpenPort("/dev/ttyACM0") 
+	p, err := userial.NewSerial().OpenPort("/dev/ttyACM0") 
 	if err != nil {
 		log.Fatal(err)
 	}
