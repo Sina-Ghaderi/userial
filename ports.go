@@ -84,6 +84,9 @@ func (p *Port) Buffered() (int, error) {
 	return unix.IoctlGetInt(int(p.f.Fd()), unix.TIOCOUTQ)
 }
 
+// Expose serial fd to use in some special cases, ioctl etc...
+func (p *Port) File() *os.File { return p.f }
+
 func timeout(d time.Duration) (byte, byte) {
 	if d > 0x0 {
 		t := math.Min(math.Max(float64(d.Nanoseconds()/1e6/100), 0x01), 0xff)
