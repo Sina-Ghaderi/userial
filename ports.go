@@ -65,8 +65,21 @@ func (p *Port) Write(b []byte) (int, error) { return p.f.Write(b) }
 func (p *Port) Close() error { return p.f.Close() }
 
 // Flush implement flush() method for serial port
+// flushes both data received but not read, and data written but not transmitted
 func (p *Port) Flush() error {
 	return unix.IoctlSetInt(int(p.f.Fd()), unix.TCFLSH, unix.TCIOFLUSH)
+}
+
+// Flush implement flush() method for serial port
+// flushes data received but not read
+func (p *Port) FlushRead() error {
+	return unix.IoctlSetInt(int(p.f.Fd()), unix.TCFLSH, unix.TCIFLUSH)
+}
+
+// Flush implement flush() method for serial port
+// flushes data written but not transmitted
+func (p *Port) FlushWrite() error {
+	return unix.IoctlSetInt(int(p.f.Fd()), unix.TCFLSH, unix.TCOFLUSH)
 }
 
 // SendBreak Sends Break Signal
